@@ -1,13 +1,13 @@
 {
   "name": "dsaw",
   "version": "1.0.0",
-  "description": "Demo for Quad and KD tree",
+  "description": "Demo for Quad and KD and ",
   "scripts": {
     "clean": "rm -rf .parcel-cache && rm -rf dist",
     "build": "npm run build:index && npm run build:quadtree",
     "build:index": "parcel build index.html --dist-dir dist --public-url .",
     "build:quadtree": "parcel build quadtree/demo/*.html --dist-dir dist/quadtree/demo --public-url .",
-    "deploy": "npm run clean && npm run build && gh-pages -d dist -b master",
+    "deploy": "npm run clean && npm run build && gh-pages -d dist",
     "dev": "parcel index.html"
   },
   "repository": {
