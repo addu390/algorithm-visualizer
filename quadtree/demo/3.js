@@ -1,4 +1,7 @@
-const d3 = require('d3');
+import { interpolate } from 'd3-interpolate';
+import { scaleLinear } from 'd3-scale';
+import { select } from 'd3-selection';
+require('d3-transition');
 const { insert } = require('../operation');
 
 const width = Math.min(window.innerWidth, 750);
@@ -6,7 +9,7 @@ const height = 300;
 
 document.querySelector('#target').style.width = `${width}px`;
 
-const svg = d3.select('#target').append('svg').attr('width', width).attr('height', height);
+const svg = select('#target').append('svg').attr('width', width).attr('height', height);
 
 let quadtree = {
   boundary: {
@@ -19,7 +22,7 @@ let quadtree = {
   depth: 1,
 };
 
-const color = d3.scaleLinear().domain([0, 8]).range(['#efe', '#060']);
+const color = scaleLinear().domain([0, 8]).range(['#efe', '#060']);
 
 function nodes(quadtree) {
   quadtree.depth = 0;
@@ -82,7 +85,7 @@ function draw() {
 
   pts = svg.selectAll('.point').data(points(quadtree), (p) => p.x);
   pts.exit().remove();
-  pts
+  const selection = pts
     .enter()
     .append('circle')
     .attr('class', 'point')
@@ -92,12 +95,15 @@ function draw() {
     .attr('cy', function (d) {
       return d.y;
     })
-    .attr('r', 3)
-    .transition()
-    .duration(2000)
-    .styleTween('fill', function () {
-      return d3.interpolate('red', '#999');
-    });
+    .attr('r', 3);
+  if (typeof selection.transition === 'function') {
+    selection
+      .transition()
+      .duration(2000)
+      .styleTween('fill', function () {
+        return interpolate('red', '#999');
+      });
+  }
   svg.selectAll('.point').raise();
 }
 

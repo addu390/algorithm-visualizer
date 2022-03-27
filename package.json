@@ -4,9 +4,10 @@
   "description": "Demo for Quad and KD and ",
   "scripts": {
     "clean": "rm -rf .parcel-cache && rm -rf dist",
-    "build": "npm run build:index && npm run build:quadtree",
+    "build": "npm run build:index && npm run build:quadtree && npm run build:kdtree",
     "build:index": "parcel build index.html --dist-dir dist --public-url .",
     "build:quadtree": "parcel build quadtree/demo/*.html --dist-dir dist/quadtree/demo --public-url .",
+    "build:kdtree": "parcel build kdtree/demo/*.html --dist-dir dist/kdtree/demo --public-url .",
     "deploy": "npm run clean && npm run build && gh-pages -d dist",
     "dev": "parcel index.html"
   },
@@ -24,6 +25,8 @@
     "d3": "^7.1.1",
     "d3-quadtree": "^3.0.1",
     "d3-scale": "^4.0.0",
+    "d3-selection": "3.0.0",
+    "d3-interpolate": "3.0.1",
     "get-pixels": "^3.3.3"
   },
   "devDependencies": {
