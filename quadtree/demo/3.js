@@ -1,5 +1,5 @@
 const d3 = require('d3');
-const { insert } = require('../quadtree');
+const { insert } = require('../operation');
 
 const width = Math.min(window.innerWidth, 750);
 const height = 300;

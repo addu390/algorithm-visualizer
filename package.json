@@ -1,7 +1,7 @@
 {
   "name": "dsaw",
   "version": "1.0.0",
-  "description": "Demo Quad and KS tree",
+  "description": "Demo for KD and Quad tree",
   "scripts": {
     "clean": "rm -rf .parcel-cache && rm -rf dist",
     "build": "npm run build:index && npm run build:quadtree",
@@ -10,6 +10,16 @@
     "deploy": "npm run clean && npm run build && gh-pages -d dist",
     "dev": "parcel index.html"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addu390/dsaw.git"
+  },
+  "author": "Chidi Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/addu390/dsaw/issues"
+  },
+  "homepage": "https://github.com/addu390/dsaw#readme",
   "dependencies": {
     "d3": "^7.1.1",
     "d3-quadtree": "^3.0.1",
